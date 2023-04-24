@@ -1,0 +1,11 @@
+items:
+- iPhone SE
+- iPhone 7
+- iPhone 8
+- iPhone Xs
+items_price:
+  iPhone 7: 600$
+  iPhone 8: 700$
+  iPhone SE: 500$
+  iPhone Xs: 900$
+items_quantity: 4
