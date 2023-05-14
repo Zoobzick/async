@@ -5,11 +5,13 @@ from socket import *
 import logging
 import log.client_log_config
 import errors
-
+from decors import log
 from common.utils import send_message, get_message
 
 CLIENT_LOGGER = logging.getLogger('client')
 
+
+@log
 def presence_handler():
     msg = {
         'action': 'presence',
@@ -22,6 +24,7 @@ def presence_handler():
     return msg
 
 
+@log
 def response_handler(message):
     CLIENT_LOGGER.debug(f'Parsing message from server: {message}')
     if 'RESPONSE' in message:
@@ -51,7 +54,7 @@ def client():
 
     try:
         response = response_handler(get_message(s))
-        print(response)
+
     except json.JSONDecodeError:
         CLIENT_LOGGER.error('Could not decode received JSON string')
     except ConnectionRefusedError:
