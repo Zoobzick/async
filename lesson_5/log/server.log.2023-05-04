@@ -1,0 +1,10 @@
+2023-05-04 19:17:07,918 INFO server.py Starting server: 127.0.0.1:7777
+2023-05-04 19:17:21,560 INFO server.py Starting server: 127.0.0.1:7777
+2023-05-04 19:17:32,025 INFO server.py Starting server: 127.0.0.1:7777
+2023-05-04 19:17:43,151 DEBUG server.py Parsing message from client: {'action': 'presence', 'time': 1683217063.1510315, 'user': {'account_name': 'Guest'}}
+2023-05-04 19:23:01,088 INFO server.py Starting server: 127.0.0.1:7777
+2023-05-04 19:23:13,403 INFO server.py Connection established with ('127.0.0.1', 58047)
+2023-05-04 19:23:13,404 DEBUG server.py Received message {'action': 'presence', 'time': 1683217393.4032116, 'user': {'account_name': 'Guest'}}
+2023-05-04 19:23:13,404 DEBUG server.py Parsing message from client: {'action': 'presence', 'time': 1683217393.4032116, 'user': {'account_name': 'Guest'}}
+2023-05-04 19:23:13,405 DEBUG server.py Created response to the client: {'RESPONSE': 200}
+2023-05-04 19:23:13,405 DEBUG server.py Connection closed ('127.0.0.1', 58047)

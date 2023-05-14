@@ -2,12 +2,13 @@ import sys
 from socket import *
 import logging
 import log.server_log_config
-
+from decors import log
+from errors import IncorrectDataRecievedError
 from common.utils import get_message, send_message
 
 SERVER_LOGGER = logging.getLogger('server')
 
-
+@log
 def messages_handler(message):
     SERVER_LOGGER.debug(f'Parsing message from client: {message}')
     if 'action' in message and message['action'] == 'presence' and 'time' in message \
@@ -42,13 +43,16 @@ def server():
     while True:
         client, client_address = s.accept()
         SERVER_LOGGER.info(f'Connection established with {client_address}')
-        message_from_client = get_message(client)
-        SERVER_LOGGER.debug(f'Received message {message_from_client}')
-        response = messages_handler(message_from_client)
-        SERVER_LOGGER.debug(f'Created response to the client: {response}')
-        send_message(client, response)
-        client.close()
-        SERVER_LOGGER.debug(f'Connection closed {client_address}')
+        try:
+            message_from_client = get_message(client)
+            SERVER_LOGGER.debug(f'Received message {message_from_client}')
+            response = messages_handler(message_from_client)
+            SERVER_LOGGER.debug(f'Created response to the client: {response}')
+            send_message(client, response)
+            client.close()
+            SERVER_LOGGER.debug(f'Connection closed {client_address}')
+        except IncorrectDataRecievedError:
+            SERVER_LOGGER.error(f"Received incorrect data from client: {client_address}")
 
 
 if __name__ == '__main__':
