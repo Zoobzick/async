@@ -13,7 +13,6 @@ else:
 
 def log(func):
     def log_saver(*args, **kwargs):
-        print(*args, **kwargs)
         result = func(*args, **kwargs)
         LOGGER.debug(f'Called function {func.__name__} with params:{args}, {kwargs}'
                      f'From module: {func.__module__}, '

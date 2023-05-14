@@ -1,10 +1,10 @@
 import json
-# from decors import log
 import sys
 sys.path.append('../')
+from decors import log
 
 
-# @log
+@log
 def get_message(client):
     message = client.recv(1024)
     if isinstance(message, bytes):
@@ -16,7 +16,7 @@ def get_message(client):
     raise ValueError
 
 
-# @log
+@log
 def send_message(socket, message):
     js_message = json.dumps(message)
     encoded_message = js_message.encode('utf-8')
